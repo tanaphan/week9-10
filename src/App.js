@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/index';
+import ContactScreen from './screens/ContactScreen';
+import AboutScreen from './screens/AboutScreen';
+import NotFoundPage from './screens/NotFoundPage';
+import Navbar from './layouts/Navbar';
+import Footer from './layouts/Footer';
+import InfoScreen from './screens/InfoScreen';
 
-function App() {
+const App =()=>{
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+      <Navbar/>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/about" component={AboutScreen}/>
+        <Route exact path="/contact" component={ContactScreen}/>
+        <Route exact path="/Info" component={InfoScreen}/>
+        <Route exact component={NotFoundPage}/>
+      </Switch>
+      {/*Footer*/}
+      <Footer college="วิทยาลัยเทคนิคตราด" address="480 หมู่.9 ถนนสุขุมวิท ต.วังกระเเจะ อ.เมือง จ.ตราด" name="ธนภัณฑ์ สายวงค์เปียง" />
+      </div>
+    </Router>
   );
 }
 
